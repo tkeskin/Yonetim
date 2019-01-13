@@ -1,4 +1,4 @@
-- Spring Boot,MVC,Microservices
+- Spring Boot,MVC,JPA,Microservices
 - Server --> Java
 - Template Engine --> Thymeleaf,Bootstrap
 - Build Tools --> Maven
