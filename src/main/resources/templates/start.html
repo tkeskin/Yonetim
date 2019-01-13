@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <!-- Dashboard CSS -->
+    <link href="../static/css/dashboard.css" rel="stylesheet" th:href="@{/css/dashboard.css}"/>
+    <title>Yonetim</title>
+</head>
+<body>
+
+<!-- Fragment navbar -->
+<div th:replace="fragments/navbar" :: navbar></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Fragment sidebar -->
+        <div th:replace="fragments/sidebar" :: sidebar></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <form action="#" th:action="@{/ara}" method="get">
+                    <input type="text" name="arama">
+                    <button name="submit" type="submit" value="0" class="btn btn-primary mb-2">Ara</button>
+                </form>
+
+            <div class="list-group" th:each="sahip : ${sahipDTO}">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <p th:text="${sahip}"></p>
+                </a>
+            </div>
+            <!-- <p th:text="${yonetimDTO}"/>
+
+            <form action="#" th:action="@{/saveYonetim}" th:object="${yonetimDTO}" method="GET">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label class="sr-only" for="ad">Ad</label>
+                        <input type="text" class="form-control mb-2" id="ad" th:field="*{ad}" placeholder="Cengiz">
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" for="soyad">Soyad</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" id="soyad" th:field="*{soyad}" placeholder="Aras">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" for="aciklama">Açıklama</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" id="aciklama" th:field="*{aciklama}" placeholder="Aras">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Kaydet</button>
+                    </div>
+                </div>
+            </form>-->
+    </main>
+</div>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+</body>
+</html>

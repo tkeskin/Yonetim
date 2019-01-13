@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="../logs"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/debug.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover. Make sure the path matches the one in the file element or else
+             the rollover logs are placed in the working directory. -->
+            <fileNamePattern>${LOGS}/archived/debug_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/redditApp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/redditApp.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="STASH" />
+    </root>
+
+    <root level="DEBUG">
+        <appender-ref ref="file" />
+    </root>
+    <root level="info">
+        <appender-ref ref="console" />
+    </root>
+
+    <logger name="com.yonetim" level="trace" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </logger>
+</configuration>
