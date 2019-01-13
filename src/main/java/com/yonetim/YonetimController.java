@@ -95,7 +95,7 @@ public class YonetimController {
         return "start";
     }
 
-    //getmapping örneği
+    //getmapping örneği...
     @GetMapping("/ara1")
     public String ara1(@RequestParam(value = "arama",required = true , defaultValue = "") String aranacak){
         String son = aranacak + "";
