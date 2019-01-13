@@ -7,4 +7,4 @@
 - Application Server --> Tomcat
 - Log --> Elasticsearch, Logstash, Kibana
 - Test --> Mockito
-- agile tool --> scrumy
+- Agile tool --> scrumy
