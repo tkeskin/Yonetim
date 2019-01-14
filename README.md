@@ -1,10 +1,9 @@
-- Spring Boot,MVC,JPA,Microservices
-- Server --> Java
+- Java,Spring Boot,MVC,JPA,Microservices
 - Template Engine --> Thymeleaf,Bootstrap
 - Build Tools --> Maven
-- ORM --> Hibernate
-- DB -- Mysql
+- ORM --> Hibernate,Envers
+- DB --> Mysql
 - Application Server --> Tomcat
 - Log --> Elasticsearch, Logstash, Kibana
 - Test --> Mockito
-- Agile tool --> scrumy
+- Agile tool --> Scrumy
