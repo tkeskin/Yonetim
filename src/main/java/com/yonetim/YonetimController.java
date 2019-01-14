@@ -82,7 +82,7 @@ public class YonetimController {
         return "start";
     }
 
-    //domain end-point olarak ayarlanır
+    //domain end-point olarak ayarlanır...
     @RequestMapping("")
     public String index(){
         logger.info("Kullanıcı geldi");

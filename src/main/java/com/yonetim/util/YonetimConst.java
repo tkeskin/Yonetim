@@ -1,7 +1,5 @@
 package com.yonetim.util;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-
 public class YonetimConst {
 
     public static String BASE_URL="http://plantplaces.com";
