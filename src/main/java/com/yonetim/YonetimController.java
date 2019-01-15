@@ -95,14 +95,14 @@ public class YonetimController {
         return "start";
     }
 
-    //getmapping örneği
+    //getmapping örneği...
     @GetMapping("/ara1")
     public String ara1(@RequestParam(value = "arama",required = true , defaultValue = "") String aranacak){
         String son = aranacak + "";
         return "start";
     }
 
-    //getmapping örneği,front-end ojke olarak geldi...
+    //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/araManuel")
     public ModelAndView araManuel(@RequestParam Map<String,String> requestParam){
         int son = requestParam.size();
