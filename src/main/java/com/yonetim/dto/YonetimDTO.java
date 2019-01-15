@@ -1,11 +1,21 @@
 package com.yonetim.dto;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "yonetim")
 public class YonetimDTO {
 
     //instance var.
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+    @Column(name = "ad")
     private String ad;
+    @Column(name = "soyad")
     private String soyad;
+    @Column(name = "aciklama")
     private String aciklama;
 
     //default cons.

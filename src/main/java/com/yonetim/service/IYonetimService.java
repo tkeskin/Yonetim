@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IYonetimService {
     YonetimDTO getId(int i);
-    void save(YonetimDTO yonetimDTO);
+    boolean save(YonetimDTO yonetimDTO) throws Exception;
     List<SahipDTO> kayitAlManuel(String deneme) throws Exception;
     List<PlantDTO> kayitAl(String deneme) throws Exception;
 }

@@ -49,6 +49,16 @@ public class YonetimController {
     @RequestMapping(value = "/saveYonetim", method = RequestMethod.GET)
     public String saveYonetim(YonetimDTO yonetimDTO){
         yonetimDTO.setId(11);
+        yonetimDTO.setAd("x");
+        yonetimDTO.setSoyad("y");
+        yonetimDTO.setAciklama("z");
+        try {
+            yonetimService.save(yonetimDTO);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+            return "error";
+        }
         return "start";
     }
 
