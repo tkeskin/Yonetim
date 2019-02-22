@@ -49,6 +49,16 @@ public class YonetimController {
     @RequestMapping(value = "/saveYonetim", method = RequestMethod.GET)
     public String saveYonetim(YonetimDTO yonetimDTO){
         yonetimDTO.setId(11);
+        yonetimDTO.setAd("x");
+        yonetimDTO.setSoyad("y");
+        yonetimDTO.setAciklama("z");
+        try {
+            yonetimService.save(yonetimDTO);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+            return "error";
+        }
         return "start";
     }
 
@@ -82,7 +92,7 @@ public class YonetimController {
         return "start";
     }
 
-    //domain end-point olarak ayarlanır
+    //domain end-point olarak ayarlanır...
     @RequestMapping("")
     public String index(){
         logger.info("Kullanıcı geldi");
@@ -102,7 +112,7 @@ public class YonetimController {
         return "start";
     }
 
-    //getmapping örneği,front-end ojke olarak geldi...
+    //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/araManuel")
     public ModelAndView araManuel(@RequestParam Map<String,String> requestParam){
         int son = requestParam.size();
