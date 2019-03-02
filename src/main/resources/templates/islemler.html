@@ -23,13 +23,14 @@
         <div th:replace="fragments/sidebar" :: sidebar></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <p>GO</p>
+            <ul class="list-group" th:each="yonetim : ${allYonetim}">
+                <li class="list-group-item">
+                    <div th:text="${yonetim}"></div>
+                </li>
+            </ul>
         </main>
     </div>
 </div>
-
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>

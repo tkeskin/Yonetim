@@ -46,9 +46,13 @@ public class YonetimController {
         return yonetimDTO;
     }
 
-    @RequestMapping(value = "/saveYonetim", method = RequestMethod.GET)
+    @RequestMapping(value = "/saveYonetim", method = RequestMethod.POST)
     public String saveYonetim(YonetimDTO yonetimDTO){
-        yonetimDTO.setId(11);
+        try {
+            yonetimService.save(yonetimDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "start";
     }
 
@@ -102,7 +106,7 @@ public class YonetimController {
         return "start";
     }
 
-    //getmapping örneği,front-end ojke olarak geldi...
+    //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/araManuel")
     public ModelAndView araManuel(@RequestParam Map<String,String> requestParam){
         int son = requestParam.size();
@@ -121,7 +125,7 @@ public class YonetimController {
         return modelAndView;
     }
 
-    //getmapping örneği,front-end obke olarak geldi...
+    //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/ara")
     public ModelAndView ara(@RequestParam Map<String,String> requestParam){
         logger.debug("Arama başladı...");
@@ -148,8 +152,21 @@ public class YonetimController {
         return modelAndView;
     }
 
-    @RequestMapping("/go")
-    public String go(){
-        return "go";
+    @RequestMapping("/basvuru")
+    public String go(Model model){
+        model.addAttribute("yonetimDto",new YonetimDTO());
+        return "basvuru";
+    }
+    @RequestMapping("/islemler")
+    public ModelAndView showYonetim(){
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Iterable<YonetimDTO> yonetimDTOS = yonetimService.fetchAllYonetim();
+            modelAndView.setViewName("islemler");
+            modelAndView.addObject("allYonetim",yonetimDTOS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return modelAndView;
     }
 }

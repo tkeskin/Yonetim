@@ -1,6 +1,7 @@
 package com.yonetim.service;
 
 import com.yonetim.dao.ISahipDAO;
+import com.yonetim.dao.IYonetimDAO;
 import com.yonetim.dto.PlantDTO;
 import com.yonetim.dto.SahipDTO;
 import com.yonetim.dto.YonetimDTO;
@@ -15,6 +16,9 @@ public class YonetimService implements IYonetimService{
     @Autowired
     ISahipDAO sahipDAO;
 
+    @Autowired
+    IYonetimDAO yonetimDAO;
+
     public YonetimDTO getId(int i){
         YonetimDTO yonetimDTO = new YonetimDTO();
         yonetimDTO.setId(i);
@@ -24,8 +28,21 @@ public class YonetimService implements IYonetimService{
         return yonetimDTO;
     }
 
-    public void save(YonetimDTO yonetimDTO){
+    @Override
+    public boolean save(YonetimDTO yonetimDTO) throws Exception{
+        yonetimDAO.save(yonetimDTO);
+        return false;
+    }
 
+    /**
+     *
+     * @param
+     * @return bütün kayıtları listeler
+     * @throws Exception
+     */
+    @Override
+    public Iterable<YonetimDTO> fetchAllYonetim() throws Exception{
+        return yonetimDAO.fetchAll();
     }
 
     @Override

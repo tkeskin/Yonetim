@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <!-- Dashboard CSS -->
+    <link href="../static/css/dashboard.css" rel="stylesheet" th:href="@{/css/dashboard.css}"/>
+    <title>Yonetim</title>
+</head>
+<body>
+
+<!-- Fragment navbar -->
+<div th:replace="fragments/navbar" :: navbar></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Fragment sidebar -->
+        <div th:replace="fragments/sidebar" :: sidebar></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h1>Form</h1>
+            <form action="#" th:action="@{/saveYonetim}" th:object="${yonetimDto}" method="post">
+                <p>Id: <input type="text" th:field="*{id}" /></p>
+                <p>Ad: <input type="text" th:field="*{ad}" /></p>
+                <p>Soyad: <input type="text" th:field="*{soyad}" /></p>
+                <p>Açıklama: <input type="text" th:field="*{aciklama}" /></p>
+                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            </form>
+        </main>
+    </div>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+</body>
+</html>
