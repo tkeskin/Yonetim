@@ -1,8 +1,6 @@
 package com.yonetim;
 
-import com.yonetim.dto.PlantDTO;
-import com.yonetim.dto.SahipDTO;
-import com.yonetim.dto.YonetimDTO;
+import com.yonetim.dto.*;
 import com.yonetim.service.IYonetimService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -32,27 +31,55 @@ public class YonetimController {
 
     @RequestMapping(value = "/start", method = RequestMethod.GET)
     public String read(Model model){
-        YonetimDTO yonetimDTO = yonetimService.getId(1);
-        model.addAttribute("yonetimDTO",yonetimDTO);
+        BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(1);
+        model.addAttribute("yonetimDTO", basvuruSahibiDTO);
         return "start";
     }
 
     //object olarak dönüş,ResponseBody örneği...
     @RequestMapping(value = "/object", method = RequestMethod.GET)
     @ResponseBody
-    public YonetimDTO send(Model model){
-        YonetimDTO yonetimDTO = yonetimService.getId(1);
-        model.addAttribute("yonetimDTO",yonetimDTO);
-        return yonetimDTO;
+    public BasvuruSahibiDTO send(Model model){
+        BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(1);
+        model.addAttribute("yonetimDTO", basvuruSahibiDTO);
+        return basvuruSahibiDTO;
     }
 
     @RequestMapping(value = "/saveYonetim", method = RequestMethod.POST)
-    public String saveYonetim(YonetimDTO yonetimDTO){
+    public String saveYonetim(@ModelAttribute BasvuruViewDTO basvuruViewDTO){
+        /*try {
+            yonetimService.existApplicant(basvuruViewDTO.getAd());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        BasvuruSahibiDTO basvuruSahibiDTO = new BasvuruSahibiDTO();
+        basvuruSahibiDTO.setAd(basvuruViewDTO.getAd());
+        basvuruSahibiDTO.setSoyad(basvuruViewDTO.getSoyad());
+        basvuruSahibiDTO.setTc(basvuruViewDTO.getTc());
+        basvuruSahibiDTO.setCep(basvuruViewDTO.getCep());
+        basvuruSahibiDTO.setEposta(basvuruViewDTO.getEposta());
+
+        BasvuruDTO basvuruDTO = new BasvuruDTO();
+        basvuruDTO.setAciklama(basvuruViewDTO.getAciklama());
+        basvuruDTO.setBasvuruTuru(basvuruViewDTO.getBasvuruTuru());
+        basvuruDTO.setCevapTuru(basvuruViewDTO.getCevapTuru());
+        basvuruDTO.setUnvan(basvuruViewDTO.getUnvan());
+        basvuruDTO.setDate(new Date());
+        basvuruSahibiDTO.addBasvuru(basvuruDTO);
+
         try {
-            yonetimService.save(yonetimDTO);
+            yonetimService.save(basvuruSahibiDTO);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        /*try {
+            yonetimService.save(basvuruDTO);
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
+
         return "start";
     }
 
@@ -73,10 +100,10 @@ public class YonetimController {
 
     @RequestMapping(value = "/start", method = RequestMethod.GET,params = {"loyalty=silver"})
     public ModelAndView readSilver(){
-        YonetimDTO yonetimDTO = yonetimService.getId(3);
+        BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(3);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("start");
-        modelAndView.addObject("yonetimDTO",yonetimDTO);
+        modelAndView.addObject("yonetimDTO", basvuruSahibiDTO);
         return modelAndView;
     }
 
@@ -154,14 +181,14 @@ public class YonetimController {
 
     @RequestMapping("/basvuru")
     public String go(Model model){
-        model.addAttribute("yonetimDto",new YonetimDTO());
+        model.addAttribute("basvuru",new BasvuruViewDTO());
         return "basvuru";
     }
     @RequestMapping("/islemler")
     public ModelAndView showYonetim(){
         ModelAndView modelAndView = new ModelAndView();
         try {
-            Iterable<YonetimDTO> yonetimDTOS = yonetimService.fetchAllYonetim();
+            Iterable<BasvuruDTO> yonetimDTOS = yonetimService.fetchAllYonetim();
             modelAndView.setViewName("islemler");
             modelAndView.addObject("allYonetim",yonetimDTOS);
         } catch (Exception e) {

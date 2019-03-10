@@ -9,7 +9,7 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- Dashboard CSS -->
     <link href="../static/css/dashboard.css" rel="stylesheet" th:href="@{/css/dashboard.css}"/>
-    <title>Yonetim</title>
+    <title>Yönetim - Başvuru</title>
 </head>
 <body>
 
@@ -23,19 +23,22 @@
         <div th:replace="fragments/sidebar" :: sidebar></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1>Form</h1>
-            <form action="#" th:action="@{/saveYonetim}" th:object="${yonetimDto}" method="post">
-                <p>Id: <input type="text" th:field="*{id}" /></p>
-                <p>Ad: <input type="text" th:field="*{ad}" /></p>
-                <p>Soyad: <input type="text" th:field="*{soyad}" /></p>
-                <p>Açıklama: <input type="text" th:field="*{aciklama}" /></p>
-                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <form action="#" th:action="@{/saveYonetim}" th:object="${basvuru}" method="post">
+                <p>Başvuru Türü: <input type="text" th:field="*{basvuruTuru}" /></p>
+                <p>Tc: <input type="text" th:field="*{tc}"/></p>
+                <p>Ad: <input type="text" th:field="*{ad}"/></p>
+                <p>Soyad: <input type="text" th:field="*{soyad}"/></p>
+                <p>Unvan: <input type="text" th:field="*{unvan}"/></p>
+                <p>Cep: <input type="text" th:field="*{cep}"/></p>
+                <p>E-Posta: <input type="text" th:field="*{eposta}"/></p>
+                <p>Cevap: <input type="text" th:field="*{cevapTuru}"/></p>
+                <p>Açıklama: <input type="text" th:field="*{aciklama}"/></p>
+                <p><input type="submit" value="Kaydet" /> <input type="reset" value="Temizle"/></p>
             </form>
         </main>
+
     </div>
 </div>
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

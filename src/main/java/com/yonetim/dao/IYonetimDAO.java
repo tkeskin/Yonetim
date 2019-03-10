@@ -1,8 +1,11 @@
 package com.yonetim.dao;
 
-import com.yonetim.dto.YonetimDTO;
+import com.yonetim.dto.BasvuruDTO;
+import com.yonetim.dto.BasvuruSahibiDTO;
 
 public interface IYonetimDAO {
-    boolean save(YonetimDTO yonetimDTO) throws Exception;
-    Iterable<YonetimDTO> fetchAll() throws Exception;
+    boolean existApplicant(String name);
+    boolean save(BasvuruSahibiDTO basvuruSahibiDTO) throws Exception;
+    boolean save(BasvuruDTO basvuruDTO) throws Exception;
+    Iterable<BasvuruDTO> fetchAll() throws Exception;
 }
