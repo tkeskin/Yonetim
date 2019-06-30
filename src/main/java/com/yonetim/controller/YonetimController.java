@@ -1,4 +1,4 @@
-package com.yonetim;
+package com.yonetim.controller;
 
 import com.yonetim.dto.*;
 import com.yonetim.service.IYonetimService;
@@ -52,6 +52,11 @@ public class YonetimController {
         } catch (Exception e) {
             e.printStackTrace();
         }*/
+        try {
+            yonetimService.existApplicant(basvuruViewDTO.getTc());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         BasvuruSahibiDTO basvuruSahibiDTO = new BasvuruSahibiDTO();
         basvuruSahibiDTO.setAd(basvuruViewDTO.getAd());
         basvuruSahibiDTO.setSoyad(basvuruViewDTO.getSoyad());
@@ -190,7 +195,7 @@ public class YonetimController {
         try {
             Iterable<BasvuruDTO> yonetimDTOS = yonetimService.fetchAllYonetim();
             modelAndView.setViewName("islemler");
-            modelAndView.addObject("allYonetim",yonetimDTOS);
+            modelAndView.addObject("yonetim",yonetimDTOS);
         } catch (Exception e) {
             e.printStackTrace();
         }

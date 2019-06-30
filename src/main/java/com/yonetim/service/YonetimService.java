@@ -30,8 +30,8 @@ public class YonetimService implements IYonetimService{
     }
 
     @Override
-    public boolean existApplicant(String name) throws Exception {
-        yonetimDAO.existApplicant(name);
+    public boolean existApplicant(String tckn) throws Exception {
+        yonetimDAO.existApplicant(tckn);
         return false;
     }
 

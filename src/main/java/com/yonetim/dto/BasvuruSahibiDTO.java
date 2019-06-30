@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "basvuruSahibi", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "AD")})
+        @UniqueConstraint(columnNames = "TC")})
 @SequenceGenerator(name="seq_sahip", initialValue=1, allocationSize=100)
 public class BasvuruSahibiDTO {
     //instance var.

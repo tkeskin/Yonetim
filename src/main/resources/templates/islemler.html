@@ -23,9 +23,10 @@
         <div th:replace="fragments/sidebar" :: sidebar></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <ul class="list-group" th:each="yonetim : ${allYonetim}">
+            <ul class="list-group" th:each="yonet : ${yonetim}">
                 <li class="list-group-item">
-                    <div th:text="${yonetim}"></div>
+                    <div th:text="${yonet.id}"></div>
+                    <div th:text="${yonet.basvuruTuru}"></div>
                 </li>
             </ul>
         </main>
