@@ -1,11 +1,7 @@
 package com.yonetim;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
-
 public class JUnit {
-
+/*
     @BeforeClass
     public static void ayarlar(){
         int i = 1 + 1;
@@ -57,4 +53,5 @@ public class JUnit {
     public void ayarSonra(){
         int i = 1 + 1;
     }
+    */
 }

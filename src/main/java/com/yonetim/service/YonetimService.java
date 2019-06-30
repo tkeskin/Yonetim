@@ -3,9 +3,9 @@ package com.yonetim.service;
 import com.yonetim.dao.ISahipDAO;
 import com.yonetim.dao.IYonetimDAO;
 import com.yonetim.dto.BasvuruDTO;
+import com.yonetim.dto.BasvuruSahibiDTO;
 import com.yonetim.dto.PlantDTO;
 import com.yonetim.dto.SahipDTO;
-import com.yonetim.dto.BasvuruSahibiDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

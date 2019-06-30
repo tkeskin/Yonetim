@@ -1,9 +1,9 @@
 package com.yonetim.service;
 
 import com.yonetim.dto.BasvuruDTO;
+import com.yonetim.dto.BasvuruSahibiDTO;
 import com.yonetim.dto.PlantDTO;
 import com.yonetim.dto.SahipDTO;
-import com.yonetim.dto.BasvuruSahibiDTO;
 
 import java.util.List;
 
