@@ -1,5 +1,5 @@
 # Yönetim Uygulaması
-- Başvuru yapılır --> Cevap verilir --> Cevap kullanıcıya gönderilir.
+- Başvuru yapılır --> Cevap verilir --> Cevap Onaylanır --> Cevap kullanıcıya gönderilir.
 
 # Teknolojiler
 - Java,Spring Boot,MVC,JPA,Microservices
@@ -21,9 +21,9 @@ $ docker build -t yonetim .
 $ docker image ls
 
 # Run Docker Image
-$ docker run -p 9090:8080 yonetim
+$ docker run -p 8080:8080 yonetim
 
 # Özet
-1- docker run --name=mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=yonetim -d mysql
-2 - ./gradlew clean build && docker build -t yonetim .
-3 - docker run --name yonetimCont -d --link mysql:db -p 8080:8080 yonetim
+- docker run --name=mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=yonetim -d mysql
+- ./gradlew clean build && docker build -t yonetim .
+- docker run --name yonetimCont -d --link mysql:db -p 8080:8080 yonetim
