@@ -1,7 +1,12 @@
 package com.yonetim.util;
 
+/**
+ * tkeskin .
+ */
 public class YonetimConst {
-
-    public static String BASE_URL="http://plantplaces.com";
-    public static String URL="http://plantplaces.com/perl/mobile/viewplantsjson.pl?Combined_Name=Oak";
+    /**
+     * Const.
+     */
+    public static final String BASE_URL = "http://www.plantplaces.com";
+    public static final String URL = "http://www.plantplaces.com/perl/mobile/viewplantsjson.pl?Combined_Name=Oak";
 }

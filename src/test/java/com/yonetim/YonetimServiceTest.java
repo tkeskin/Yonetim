@@ -1,5 +1,8 @@
 package com.yonetim;
 
+/**
+ * tkeskin .
+ */
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
 public class YonetimServiceTest {

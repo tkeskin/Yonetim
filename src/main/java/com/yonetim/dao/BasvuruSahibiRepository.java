@@ -7,7 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 
-public interface BasvuruSahibiRepository extends CrudRepository<BasvuruSahibiDTO,Integer> {
+/**
+ * tkeskin .
+ */
+public interface BasvuruSahibiRepository extends CrudRepository<BasvuruSahibiDTO, Integer> {
     @Query(value = "SELECT * FROM basvuru_sahibi WHERE tc=:tckn ", nativeQuery = true)
     Collection<BasvuruSahibiDTO> existsApplicant(@Param("tckn") String tckn);
 }

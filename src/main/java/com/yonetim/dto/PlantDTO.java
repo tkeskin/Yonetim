@@ -3,6 +3,9 @@ package com.yonetim.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * tkeskin .
+ */
 public class PlantDTO {
 
     @SerializedName("id")
@@ -63,6 +66,6 @@ public class PlantDTO {
 
     @Override
     public String toString() {
-        return id + " " + genus + " " + species + " " + cultivar + " " + common ;
+        return id + " " + genus + " " + species + " " + cultivar + " " + common;
     }
 }

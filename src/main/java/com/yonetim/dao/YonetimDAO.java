@@ -4,9 +4,11 @@ import com.yonetim.dto.BasvuruDTO;
 import com.yonetim.dto.BasvuruSahibiDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 
+/**
+ * tkeskin .
+ */
 @Component
 public class YonetimDAO implements IYonetimDAO {
 
@@ -35,7 +37,7 @@ public class YonetimDAO implements IYonetimDAO {
     }
 
     @Override
-    public Iterable<BasvuruDTO> fetchAll() throws Exception{
+    public Iterable<BasvuruDTO> fetchAll() throws Exception {
         return yonetimRepository.findAll();
     }
 

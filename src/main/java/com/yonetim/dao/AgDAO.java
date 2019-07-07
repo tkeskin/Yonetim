@@ -9,16 +9,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * tkeskin .
+ */
 @Component
 public class AgDAO {
-
     /**
-     * verilen endpointe göre veri döner
-     * @param endpoint
-     * @return
-     * @throws Exception
+     * verilen endpointe göre veri döner .
+     * @param endpoint .
+     * @return .
+     * @throws Exception .
      */
-    public String istek(String endpoint) throws Exception{
+    public String istek(String endpoint) throws Exception {
         StringBuilder builder = new StringBuilder();
 
         URL url = new URL(endpoint);
@@ -37,15 +39,14 @@ public class AgDAO {
 
             //tek bir satır olarak oku...
             String inputLine = bufferedReader.readLine();
-            while (inputLine != null){
+            while (inputLine != null) {
                 builder.append(inputLine);
                 //yeni satır
                 inputLine = bufferedReader.readLine();
             }
-        }finally {
+        } finally {
             urlConnection.disconnect();
         }
-
         return builder.toString();
     }
 }

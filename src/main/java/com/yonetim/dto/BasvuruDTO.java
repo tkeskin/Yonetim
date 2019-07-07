@@ -1,15 +1,30 @@
 package com.yonetim.dto;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+/**
+ * tkeskin .
+ */
 @Entity
-@Table(name = "basvuru",uniqueConstraints = @UniqueConstraint(columnNames = "DATE"))
-@SequenceGenerator(name="seq_bas", initialValue=1, allocationSize=100)
+@Table(name = "basvuru", uniqueConstraints = @UniqueConstraint(columnNames = "DATE"))
+@SequenceGenerator(name = "seq_bas", initialValue = 1, allocationSize = 100)
 public class BasvuruDTO {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_bas")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_bas")
     @Column(name = "BASVURU_ID", unique = true, nullable = false)
     private long id;
     @Column(name = "BASVURUTURU")
@@ -20,9 +35,9 @@ public class BasvuruDTO {
     private String aciklama;
     @Column(name = "UNVAN")
     private String unvan;
-    @Column(name = "DATE",length = 10)
+    @CreationTimestamp
+    @Column(name = "DATE", length = 10)
     private Date date;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BASVURU_SAHIBI_ID")

@@ -8,11 +8,13 @@ import com.yonetim.dto.PlantDTO;
 import com.yonetim.dto.SahipDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
+/**
+ * tkeskin .
+ */
 @Component
-public class YonetimService implements IYonetimService{
+public class YonetimService implements IYonetimService {
 
     @Autowired
     ISahipDAO sahipDAO;
@@ -20,7 +22,7 @@ public class YonetimService implements IYonetimService{
     @Autowired
     IYonetimDAO yonetimDAO;
 
-    public BasvuruSahibiDTO getId(int i){
+    public BasvuruSahibiDTO getId(int i) {
         BasvuruSahibiDTO basvuruSahibiDTO = new BasvuruSahibiDTO();
         //basvuruSahibiDTO.setId(i);
         basvuruSahibiDTO.setAd("TestAd");
@@ -36,35 +38,35 @@ public class YonetimService implements IYonetimService{
     }
 
     @Override
-    public boolean save(BasvuruDTO basvuruDTO) throws Exception{
+    public boolean save(BasvuruDTO basvuruDTO) throws Exception {
         yonetimDAO.save(basvuruDTO);
         return false;
     }
+
     @Override
-    public boolean save(BasvuruSahibiDTO basvuruSahibiDTO) throws Exception{
+    public boolean save(BasvuruSahibiDTO basvuruSahibiDTO) throws Exception {
         yonetimDAO.save(basvuruSahibiDTO);
         return false;
     }
 
 
     /**
-     *
      * @param
      * @return bütün kayıtları listeler
      * @throws Exception
      */
     @Override
-    public Iterable<BasvuruDTO> fetchAllYonetim() throws Exception{
+    public Iterable<BasvuruDTO> fetchAllYonetim() throws Exception {
         return yonetimDAO.fetchAll();
     }
 
     @Override
-    public List<SahipDTO> kayitAlManuel(String arama) throws Exception{
+    public List<SahipDTO> kayitAlManuel(String arama) throws Exception {
         return sahipDAO.kayitAlManuel("Oak");
     }
 
     @Override
-    public List<PlantDTO> kayitAl(String aranacakKelime) throws Exception{
+    public List<PlantDTO> kayitAl(String aranacakKelime) throws Exception {
         return sahipDAO.kayitAl(aranacakKelime);
     }
 

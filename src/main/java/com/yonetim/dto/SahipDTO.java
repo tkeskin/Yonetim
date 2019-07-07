@@ -1,5 +1,8 @@
 package com.yonetim.dto;
 
+/**
+ * tkeskin .
+ */
 public class SahipDTO {
 
     //instance var.
@@ -8,7 +11,7 @@ public class SahipDTO {
     private String soyad;
 
     //default cons.
-    public SahipDTO(){
+    public SahipDTO() {
 
     }
 

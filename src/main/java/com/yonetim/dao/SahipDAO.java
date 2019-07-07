@@ -16,8 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * tkeskin .
+ */
 @Component
-public class SahipDAO implements ISahipDAO{
+public class SahipDAO implements ISahipDAO {
 
     @Autowired
     AgDAO agDAO;
@@ -35,12 +38,12 @@ public class SahipDAO implements ISahipDAO{
         return plantList.getPlants();
     }
 
-    public List<SahipDTO> kayitAlManuel(String arananKelime) throws Exception{
+    public List<SahipDTO> kayitAlManuel(String arananKelime) throws Exception {
         List<SahipDTO> sahipDTOList = new ArrayList<SahipDTO>();
         String hamHali = agDAO.istek(YonetimConst.URL);
         JSONObject outJson = new JSONObject(hamHali);
         JSONArray jsonArray = outJson.getJSONArray("plants");
-        for (int i=0 ; i < jsonArray.length() ; i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
             SahipDTO sahipDTO = new SahipDTO();
             int tc = object.getInt("id");

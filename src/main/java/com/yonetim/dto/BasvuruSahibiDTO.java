@@ -1,18 +1,29 @@
 package com.yonetim.dto;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
-
+/**
+ * tkeskin .
+ */
 @Entity
 @Table(name = "basvuruSahibi", uniqueConstraints = {
         @UniqueConstraint(columnNames = "TC")})
-@SequenceGenerator(name="seq_sahip", initialValue=1, allocationSize=100)
+@SequenceGenerator(name = "seq_sahip", initialValue = 1, allocationSize = 100)
 public class BasvuruSahibiDTO {
     //instance var.
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_sahip")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sahip")
     @Column(name = "BASVURU_SAHIBI_ID", unique = true, nullable = false)
     private long id;
     @Column(name = "AD", unique = true, nullable = false, length = 20)
@@ -76,9 +87,10 @@ public class BasvuruSahibiDTO {
     }
 
     //default cons.
-    public BasvuruSahibiDTO(){
+    public BasvuruSahibiDTO() {
 
     }
+
     //getter-setter
     public long getId() {
         return id;

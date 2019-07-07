@@ -2,9 +2,11 @@ package com.yonetim.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
+/**
+ * tkeskin .
+ */
 public class PlantList {
 
     @SerializedName("plants")

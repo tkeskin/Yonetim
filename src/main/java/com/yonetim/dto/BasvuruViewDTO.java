@@ -1,6 +1,8 @@
 package com.yonetim.dto;
 
-
+/**
+ * tkeskin .
+ */
 public class BasvuruViewDTO {
 
     private String basvuruTuru;

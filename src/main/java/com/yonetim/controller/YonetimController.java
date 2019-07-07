@@ -1,35 +1,43 @@
 package com.yonetim.controller;
 
-import com.yonetim.dto.*;
+import com.yonetim.dto.BasvuruDTO;
+import com.yonetim.dto.BasvuruSahibiDTO;
+import com.yonetim.dto.BasvuruViewDTO;
+import com.yonetim.dto.PlantDTO;
+import com.yonetim.dto.SahipDTO;
 import com.yonetim.service.IYonetimService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+/**
+ *
+ * genel olarak parametreli ve parametresiz ornekler,post,get ve navigation .
+ *
+ */
 @Controller
 public class YonetimController {
-
-    /**
-     * genel olarak parametreli ve parametresiz ornekler,post,get ve navigation
-     * @return
-     */
-
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private IYonetimService yonetimService;
 
     @RequestMapping(value = "/start", method = RequestMethod.GET)
-    public String read(Model model){
+    public String read(Model model) {
         BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(1);
         model.addAttribute("yonetimDTO", basvuruSahibiDTO);
         return "start";
@@ -38,23 +46,18 @@ public class YonetimController {
     //object olarak dönüş,ResponseBody örneği...
     @RequestMapping(value = "/object", method = RequestMethod.GET)
     @ResponseBody
-    public BasvuruSahibiDTO send(Model model){
+    public BasvuruSahibiDTO send(Model model) {
         BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(1);
         model.addAttribute("yonetimDTO", basvuruSahibiDTO);
         return basvuruSahibiDTO;
     }
 
     @RequestMapping(value = "/saveYonetim", method = RequestMethod.POST)
-    public String saveYonetim(@ModelAttribute BasvuruViewDTO basvuruViewDTO){
-        /*try {
-            yonetimService.existApplicant(basvuruViewDTO.getAd());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+    public String saveYonetim(@ModelAttribute BasvuruViewDTO basvuruViewDTO) {
         try {
             yonetimService.existApplicant(basvuruViewDTO.getTc());
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.debug(e.getLocalizedMessage());
         }
         BasvuruSahibiDTO basvuruSahibiDTO = new BasvuruSahibiDTO();
         basvuruSahibiDTO.setAd(basvuruViewDTO.getAd());
@@ -74,36 +77,28 @@ public class YonetimController {
         try {
             yonetimService.save(basvuruSahibiDTO);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.debug(e.getLocalizedMessage());
         }
-
-
-        /*try {
-            yonetimService.save(basvuruDTO);
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
         return "start";
     }
 
-    @RequestMapping(value = "/start", method = RequestMethod.GET,headers = {"content-type=text/json"})
-    public String readJSON(){
+    @RequestMapping(value = "/start", method = RequestMethod.GET, headers = {"content-type=text/json"})
+    public String readJSON() {
         return "start";
     }
 
     @RequestMapping(value = "/addYonetim", method = RequestMethod.GET)
-    public String addYonetim(){
+    public String addYonetim() {
         return "start";
     }
 
-    @RequestMapping(value = "/start", method = RequestMethod.GET,params = {"loyalty=blue"})
-    public String readBlue(){
+    @RequestMapping(value = "/start", method = RequestMethod.GET, params = {"loyalty=blue"})
+    public String readBlue() {
         return "start";
     }
 
-    @RequestMapping(value = "/start", method = RequestMethod.GET,params = {"loyalty=silver"})
-    public ModelAndView readSilver(){
+    @RequestMapping(value = "/start", method = RequestMethod.GET, params = {"loyalty=silver"})
+    public ModelAndView readSilver() {
         BasvuruSahibiDTO basvuruSahibiDTO = yonetimService.getId(3);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("start");
@@ -113,33 +108,33 @@ public class YonetimController {
 
     //@RequestMapping(value = "/start", method = RequestMethod.POST) alttaki notasyon yeni hali ikiside aynı aslında
     @PostMapping("/start")
-    public String create(){
+    public String create() {
         return "start";
     }
 
     //domain end-point olarak ayarlanır
     @RequestMapping("")
-    public String index(){
+    public String index() {
         logger.info("Kullanıcı geldi");
         return "login";
     }
 
     //domain end-point olarak ayarlanır ...com/start
     @RequestMapping("/start")
-    public String start(){
+    public String start() {
         return "start";
     }
 
     //getmapping örneği...
     @GetMapping("/ara1")
-    public String ara1(@RequestParam(value = "arama",required = true , defaultValue = "") String aranacak){
+    public String ara1(@RequestParam(value = "arama", required = true, defaultValue = "") String aranacak) {
         String son = aranacak + "";
         return "start";
     }
 
     //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/araManuel")
-    public ModelAndView araManuel(@RequestParam Map<String,String> requestParam){
+    public ModelAndView araManuel(@RequestParam Map<String, String> requestParam) {
         int son = requestParam.size();
         String aranacak = requestParam.get("arama");
         ModelAndView modelAndView = new ModelAndView();
@@ -149,16 +144,16 @@ public class YonetimController {
             modelAndView.setViewName("start");
             //modelAndView.addObject("sahipDTO",list);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.debug(e.getLocalizedMessage());
             modelAndView.setViewName("error");
         }
-        modelAndView.addObject("sahipDTO",list);
+        modelAndView.addObject("sahipDTO", list);
         return modelAndView;
     }
 
     //getmapping örneği,front-end obje olarak geldi...
     @GetMapping("/ara")
-    public ModelAndView ara(@RequestParam Map<String,String> requestParam){
+    public ModelAndView ara(@RequestParam Map<String, String> requestParam) {
         logger.debug("Arama başladı...");
         int son = requestParam.size();
         String aranacak = requestParam.get("arama");
@@ -166,37 +161,38 @@ public class YonetimController {
         List<PlantDTO> list = new ArrayList<PlantDTO>();
         try {
             list = yonetimService.kayitAl(aranacak);
-            logger.info("Sonuç = " +list.size());
-            logger.warn("Sonuç = " +list.size());
+            logger.info("Sonuç = " + list.size());
+            logger.warn("Sonuç = " + list.size());
             modelAndView.setViewName("start");
-            if(list.size() == 0){
-                logger.warn("Arama sonucu bulunamadı = " +aranacak);
+            if (list.size() == 0) {
+                logger.warn("Arama sonucu bulunamadı = " + aranacak);
             }
             //modelAndView.addObject("sahipDTO",list);
         } catch (Exception e) {
-            logger.error("Arama yaparken hata aldı",e);
-            e.printStackTrace();
+            logger.error("Arama yaparken hata aldı", e);
+            logger.debug(e.getLocalizedMessage());
             modelAndView.setViewName("error");
         }
-        modelAndView.addObject("sahipDTO",list);
-        logger.debug("Arama bitti...");
+        modelAndView.addObject("sahipDTO", list);
+        logger.info("Arama bitti...");
         return modelAndView;
     }
 
     @RequestMapping("/basvuru")
-    public String go(Model model){
-        model.addAttribute("basvuru",new BasvuruViewDTO());
+    public String go(Model model) {
+        model.addAttribute("basvuru", new BasvuruViewDTO());
         return "basvuru";
     }
+
     @RequestMapping("/islemler")
-    public ModelAndView showYonetim(){
+    public ModelAndView showYonetim() {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Iterable<BasvuruDTO> yonetimDTOS = yonetimService.fetchAllYonetim();
             modelAndView.setViewName("islemler");
-            modelAndView.addObject("yonetim",yonetimDTOS);
+            modelAndView.addObject("yonetim", yonetimDTOS);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.debug(e.getLocalizedMessage());
         }
         return modelAndView;
     }
