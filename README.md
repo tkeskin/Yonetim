@@ -10,6 +10,7 @@
 - Application Server --> Tomcat
 - Log --> Elasticsearch, Logstash, Kibana
 - Test --> Mockito
+- added checkstyle
 - Agile tool --> Scrumy
 
 # How to Dockerize Spring Boot Application
