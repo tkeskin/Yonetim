@@ -5,6 +5,7 @@ import com.yonetim.dto.BasvuruSahibiDTO;
 import com.yonetim.dto.BasvuruViewDTO;
 import com.yonetim.dto.PlantDTO;
 import com.yonetim.dto.SahipDTO;
+import com.yonetim.payload.LoginRequest;
 import com.yonetim.service.IYonetimService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -114,9 +115,13 @@ public class YonetimController {
 
     //domain end-point olarak ayarlanır
     @RequestMapping("")
-    public String index() {
+    public ModelAndView index() {
         logger.info("Kullanıcı geldi");
-        return "login";
+        LoginRequest loginRequest = new LoginRequest();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        modelAndView.addObject("loginRequest", loginRequest);
+        return modelAndView;
     }
 
     //domain end-point olarak ayarlanır ...com/start

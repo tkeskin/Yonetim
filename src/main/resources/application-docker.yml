@@ -7,3 +7,6 @@ spring:
     url: jdbc:mysql://mysql:3306/yonetim
     username: root
     password: root123
+app:
+  jwtSecret: JWTSuperSecretKey
+  jwtExpirationInMs: 604800000
