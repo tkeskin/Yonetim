@@ -7,17 +7,18 @@ import java.util.List;
 /**
  * tkeskin .
  */
+
 public class PlantList {
 
-    @SerializedName("plants")
-    @Expose
-    private List<PlantDTO> plants = null;
+  @SerializedName("plants")
+  @Expose
+  private List<PlantDto> plants = null;
 
-    public List<PlantDTO> getPlants() {
-        return plants;
-    }
+  public List<PlantDto> getPlants() {
+    return plants;
+  }
 
-    public void setPlants(List<PlantDTO> plants) {
-        this.plants = plants;
-    }
+  public void setPlants(List<PlantDto> plants) {
+    this.plants = plants;
+  }
 }

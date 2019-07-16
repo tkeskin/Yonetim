@@ -1,74 +1,75 @@
 package com.yonetim.service;
 
-import com.yonetim.dao.ISahipDAO;
-import com.yonetim.dao.IYonetimDAO;
-import com.yonetim.dto.BasvuruDTO;
-import com.yonetim.dto.BasvuruSahibiDTO;
-import com.yonetim.dto.PlantDTO;
-import com.yonetim.dto.SahipDTO;
+import com.yonetim.dao.ISahipDao;
+import com.yonetim.dao.IYonetimDao;
+import com.yonetim.dto.BasvuruDto;
+import com.yonetim.dto.BasvuruSahibiDto;
+import com.yonetim.dto.PlantDto;
+import com.yonetim.dto.SahipDto;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.List;
 
 /**
  * tkeskin .
  */
+
 @Component
 public class YonetimService implements IYonetimService {
 
-    @Autowired
-    ISahipDAO sahipDAO;
+  @Autowired
+  ISahipDao sahipDao;
 
-    @Autowired
-    IYonetimDAO yonetimDAO;
+  @Autowired
+  IYonetimDao yonetimDao;
 
-    public BasvuruSahibiDTO getId(int i) {
-        BasvuruSahibiDTO basvuruSahibiDTO = new BasvuruSahibiDTO();
-        //basvuruSahibiDTO.setId(i);
-        basvuruSahibiDTO.setAd("TestAd");
-        basvuruSahibiDTO.setSoyad("TestSoyad");
-        //basvuruSahibiDTO.setAciklama("TestAciklama");
-        return basvuruSahibiDTO;
-    }
+  /**
+   * @param i .
+   * @return .
+   */
+  public BasvuruSahibiDto getId(int i) {
+    BasvuruSahibiDto basvuruSahibiDto = new BasvuruSahibiDto();
+    //basvuruSahibiDto.setId(i);
+    basvuruSahibiDto.setAd("TestAd");
+    basvuruSahibiDto.setSoyad("TestSoyad");
+    //basvuruSahibiDto.setAciklama("TestAciklama");
+    return basvuruSahibiDto;
+  }
 
-    @Override
-    public boolean existApplicant(String tckn) throws Exception {
-        yonetimDAO.existApplicant(tckn);
-        return false;
-    }
+  @Override
+  public boolean existApplicant(String tckn) throws Exception {
+    yonetimDao.existApplicant(tckn);
+    return false;
+  }
 
-    @Override
-    public boolean save(BasvuruDTO basvuruDTO) throws Exception {
-        yonetimDAO.save(basvuruDTO);
-        return false;
-    }
+  @Override
+  public boolean save(BasvuruDto basvuruDto) throws Exception {
+    yonetimDao.save(basvuruDto);
+    return false;
+  }
 
-    @Override
-    public boolean save(BasvuruSahibiDTO basvuruSahibiDTO) throws Exception {
-        yonetimDAO.save(basvuruSahibiDTO);
-        return false;
-    }
+  @Override
+  public boolean save(BasvuruSahibiDto basvuruSahibiDto) throws Exception {
+    yonetimDao.save(basvuruSahibiDto);
+    return false;
+  }
 
+  /**
+   * @return .
+   * @throws Exception .
+   */
+  @Override
+  public Iterable<BasvuruDto> fetchAllYonetim() throws Exception {
+    return yonetimDao.fetchAll();
+  }
 
-    /**
-     * @param
-     * @return bütün kayıtları listeler
-     * @throws Exception
-     */
-    @Override
-    public Iterable<BasvuruDTO> fetchAllYonetim() throws Exception {
-        return yonetimDAO.fetchAll();
-    }
+  @Override
+  public List<SahipDto> kayitAlManuel(String arama) throws Exception {
+    return sahipDao.kayitAlManuel("Oak");
+  }
 
-    @Override
-    public List<SahipDTO> kayitAlManuel(String arama) throws Exception {
-        return sahipDAO.kayitAlManuel("Oak");
-    }
-
-    @Override
-    public List<PlantDTO> kayitAl(String aranacakKelime) throws Exception {
-        return sahipDAO.kayitAl(aranacakKelime);
-    }
-
-
+  @Override
+  public List<PlantDto> kayitAl(String aranacakKelime) throws Exception {
+    return sahipDao.kayitAl(aranacakKelime);
+  }
 }

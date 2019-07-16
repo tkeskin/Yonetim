@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: default
+    active: docker
   jpa:
     hibernate:
       ddl-auto: create-drop

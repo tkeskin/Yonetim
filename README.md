@@ -25,6 +25,6 @@ $ docker image ls
 $ docker run -p 8080:8080 yonetim
 
 # Özet
-- docker run --name=mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=yonetim -d mysql
+- docker run -d -p 3306:3306 --name=mysql-server --env="MYSQL_ROOT_PASSWORD=root123" --env="MYSQL_DATABASE=yonetim" mysql
 - ./gradlew clean build && docker build -t yonetim .
 - docker run --name yonetimCont -d --link mysql:db -p 8080:8080 yonetim

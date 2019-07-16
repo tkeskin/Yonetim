@@ -1,16 +1,15 @@
 package com.yonetim.dao;
 
-import com.yonetim.dto.BasvuruSahibiDTO;
+import com.yonetim.dto.BasvuruSahibiDto;
+import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Collection;
-
 /**
  * tkeskin .
  */
-public interface BasvuruSahibiRepository extends CrudRepository<BasvuruSahibiDTO, Integer> {
-    @Query(value = "SELECT * FROM basvuru_sahibi WHERE tc=:tckn ", nativeQuery = true)
-    Collection<BasvuruSahibiDTO> existsApplicant(@Param("tckn") String tckn);
+public interface BasvuruSahibiRepository extends CrudRepository<BasvuruSahibiDto, Integer> {
+  @Query(value = "SELECT * FROM basvuru_sahibi WHERE tc=:tckn ", nativeQuery = true)
+  Collection<BasvuruSahibiDto> existsApplicant(@Param("tckn") String tckn);
 }

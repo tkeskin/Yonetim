@@ -1,26 +1,27 @@
 package com.yonetim.service;
 
-import com.yonetim.dto.BasvuruDTO;
-import com.yonetim.dto.BasvuruSahibiDTO;
-import com.yonetim.dto.PlantDTO;
-import com.yonetim.dto.SahipDTO;
+import com.yonetim.dto.BasvuruDto;
+import com.yonetim.dto.BasvuruSahibiDto;
+import com.yonetim.dto.PlantDto;
+import com.yonetim.dto.SahipDto;
 import java.util.List;
 
 /**
  * tkeskin .
  */
+
 public interface IYonetimService {
-    BasvuruSahibiDTO getId(int i);
+  BasvuruSahibiDto getId(int i);
 
-    boolean existApplicant(String name) throws Exception;
+  boolean existApplicant(String name) throws Exception;
 
-    boolean save(BasvuruSahibiDTO basvuruSahibiDTO) throws Exception;
+  boolean save(BasvuruSahibiDto basvuruSahibiDto) throws Exception;
 
-    boolean save(BasvuruDTO basvuruDTO) throws Exception;
+  boolean save(BasvuruDto basvuruDto) throws Exception;
 
-    Iterable<BasvuruDTO> fetchAllYonetim() throws Exception;
+  Iterable<BasvuruDto> fetchAllYonetim() throws Exception;
 
-    List<SahipDTO> kayitAlManuel(String deneme) throws Exception;
+  List<SahipDto> kayitAlManuel(String deneme) throws Exception;
 
-    List<PlantDTO> kayitAl(String deneme) throws Exception;
+  List<PlantDto> kayitAl(String deneme) throws Exception;
 }

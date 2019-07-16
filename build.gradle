@@ -103,6 +103,10 @@ group = 'com.yonetim'
 description = 'yonetim'
 sourceCompatibility = '1.8'
 
+springBoot {
+    buildInfo()
+}
+
 publishing {
     publications {
         maven(MavenPublication) {
